@@ -1,0 +1,80 @@
+# ===========================================
+# .gitignore — Projeto Swift / Xcode
+# ===========================================
+
+# Compilados e builds
+build/
+DerivedData/
+*.o
+*.linkfilelist
+*.hmap
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Packages/
+Package.pins
+Package.resolved
+# Xcode 11+ gera um workspace automático
+xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Xcode
+*.xccheckout
+*.xcscmblueprint
+*.xcuserstate
+*.moved-aside
+*.xcuserdatad
+*.xcworkspace/contents.xcworkspacedata
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+!default.xcworkspace/contents.xcworkspacedata
+
+# Logs
+*.log
+*.trace
+*.zip
+*.gz
+
+# Configurações do usuário
+*.swp
+*~
+.DS_Store
+.idea/
+.vscode/
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# SwiftLint, SwiftFormat, etc.
+.swiftlint.yml
+.swiftformat
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Arquivos de dependências externas
+Carthage/Checkouts/
+
