@@ -1,0 +1,12 @@
+//
+//  Appetizer.swift
+//  Food Factory
+//
+//  Created by Vini Oliveira  on 10/11/25.
+//
+
+protocol Appetizer{
+    var name: String { get }
+    var description: String { get }
+    var price: Double { get }
+}
