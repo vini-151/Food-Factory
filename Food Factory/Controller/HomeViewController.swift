@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     
     private var factory: FoodFactory
     
-    init(factory: FoodFactory){
+    init(factory: FoodFactory = BrazilianFactory()){
         self.factory = factory
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,6 +44,9 @@ class HomeViewController: UIViewController {
 //        navigationController.?.pushViewController(ReceiptController(), animated: true)
     }
     
+    func setFactory (factory: FoodFactory) {
+        self.factory = factory
+    }
 
 
 }
