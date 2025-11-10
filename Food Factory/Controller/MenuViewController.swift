@@ -12,12 +12,11 @@ class MenuViewController: UIViewController {
     
     // TODO: Instanciar a menuView quando tivermos ela
     
-    private let factory: FoodFactory
+    
     
     private let repository: AppRepositoryImp
     
-    init(factory: FoodFactory, repository: AppRepositoryImp) {
-        self.factory = factory
+    init(repository: AppRepositoryImp) {
         self.repository = repository
         super.init(nibName: nil, bundle: nil)
     }
@@ -25,18 +24,13 @@ class MenuViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func cozinharRefeicao(){
-        
-        var appetizer = factory.cozinharAppetizer()
-        var mainDish = factory.cozinharMainDish()
-        var dessert = factory.cozinharDessert()
-        
-    }
+
     
 
     
