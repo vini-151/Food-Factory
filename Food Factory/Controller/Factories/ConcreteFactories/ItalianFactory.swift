@@ -7,18 +7,18 @@
 
 class ItalianFactory: FoodFactory {
     
-    func cozinharAppetizer() {
-        
+    func cozinharAppetizer() ->  Appetizer {
+        return Bruschetta()
     }
     
-    func cozinharMainDish()  {
-        
+    func cozinharMainDish() ->  MainDish {
+        return Carbonara()
     }
     
-    func cozinharDessert()  {
-        
+    func cozinharDessert() ->  Dessert {
+        return Tiramisu()
     }
 
 }
 
-// TODO: Cada função deve retornar um rotocolo e um produto concreto
+

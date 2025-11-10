@@ -14,8 +14,11 @@ class MenuViewController: UIViewController {
     
     private let factory: FoodFactory
     
-    init(factory: FoodFactory) {
+    private let repository: AppRepositoryImp
+    
+    init(factory: FoodFactory, repository: AppRepositoryImp) {
         self.factory = factory
+        self.repository = repository
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -29,9 +32,9 @@ class MenuViewController: UIViewController {
     
     func cozinharRefeicao(){
         
-        let appetizer = factory.cozinharAppetizer()
-        let mainDish = factory.cozinharMainDish()
-        let dessert = factory.cozinharDessert()
+        var appetizer = factory.cozinharAppetizer()
+        var mainDish = factory.cozinharMainDish()
+        var dessert = factory.cozinharDessert()
         
     }
     

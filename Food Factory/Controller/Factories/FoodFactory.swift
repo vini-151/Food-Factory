@@ -6,9 +6,9 @@
 //
 
 protocol FoodFactory{
-    func cozinharMainDish()
-    func cozinharAppetizer() 
-    func cozinharDessert() 
+    func cozinharAppetizer() -> Appetizer
+    func cozinharMainDish() -> MainDish
+    func cozinharDessert() -> Dessert
 }
 
 // TODO: Cada função deve retornar o protocolo 

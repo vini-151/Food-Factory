@@ -6,19 +6,18 @@
 //
 
 class BrazilianFactory: FoodFactory {
-    
-    func cozinharAppetizer() {
-        
+    func cozinharAppetizer() ->  Appetizer {
+        return DadinhoDeTapioca()
     }
     
-    func cozinharMainDish()  {
-        
+    func cozinharMainDish() ->  MainDish {
+        return Feijoada()
     }
     
-    func cozinharDessert()  {
-        
+    func cozinharDessert() ->  Dessert {
+        return Pudim()
     }
+    
+    
 
 }
-
-// TODO: Cada função deve retornar um rotocolo e um produto concreto
