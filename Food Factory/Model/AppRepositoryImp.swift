@@ -9,10 +9,10 @@ import CoreData
 
 class AppRepositoryImp : AppRepository {
     
-    let viewContext: NSManagedObjectContext
+    private let viewContext: NSManagedObjectContext
     
-    init(viewContext: NSManagedObjectContext) {
-        self.viewContext = viewContext
+    init() {
+        self.viewContext = PersistenceController.shared.viewContext
     }
     
     func saveFoods(appetizer: any Appetizer, mainDish: any MainDish, dessert: any Dessert) async throws {
