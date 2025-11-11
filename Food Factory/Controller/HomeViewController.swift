@@ -7,12 +7,18 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+
+
+class HomeViewController: UIViewController {
     
     var homeView: HomeView = HomeView()
     
-    private let factory: FoodFactory
+    private var factory: FoodFactory
     
+    init(factory: FoodFactory = BrazilianFactory()){
+        self.factory = factory
+        super.init(nibName: nil, bundle: nil)
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -38,6 +44,9 @@ class HomeController: UIViewController {
 //        navigationController.?.pushViewController(ReceiptController(), animated: true)
     }
     
+    func setFactory (factory: FoodFactory) {
+        self.factory = factory
+    }
 
 
 }
