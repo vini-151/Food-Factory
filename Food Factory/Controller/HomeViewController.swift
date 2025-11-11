@@ -43,6 +43,9 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewDelegate {
     func brazilianButtonTapped() {
     
+        setFactory(factory: BrazilianFactory())
+
+        
         let menu = Menu(appetizer: factory.cozinharAppetizer(),
                         mainDish: factory.cozinharMainDish(),
                         dessert: factory.cozinharDessert()

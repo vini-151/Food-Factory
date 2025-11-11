@@ -23,19 +23,24 @@ class FoodCardView: UIView {
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.text = "The Subtitle Text Here ..."
         label.textColor = .secondaryLabel
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         return label
     }()
     
-    lazy private var image: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray3
-        view.layer.cornerRadius = 10
-        view.isUserInteractionEnabled = false
-        return view
+    lazy private var image: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.backgroundColor = .systemGray3
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
+        image.contentMode = .scaleAspectFill
+        image.isUserInteractionEnabled = false
+        return image
     }()
     
     func configure(imagee: String, titlee: String, subtitlee: String) {
+        image.image = UIImage(named: imagee)
         title.text = titlee
         subtitle.text = subtitlee
     }
@@ -79,8 +84,10 @@ class FoodCardView: UIView {
             title.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 10),
             title.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
-            subtitle.centerXAnchor.constraint(equalTo: title.centerXAnchor)
+            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
+            //subtitle.centerXAnchor.constraint(equalTo: title.centerXAnchor)
+            subtitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            subtitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
 
         ])
     }

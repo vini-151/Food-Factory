@@ -7,7 +7,7 @@
 
 class Carbonara : MainDish {
     var name: String = "Macarrão à Carbonara"
-    
+    var image : String = "carbonara"
     var description: String = "Carbonara é uma receita tradicional italiana de massa com queijo e carne de porco."
     
     var price: Double = 65.90

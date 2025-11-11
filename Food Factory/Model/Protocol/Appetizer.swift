@@ -7,6 +7,7 @@
 
 protocol Appetizer{
     var name: String { get }
+    var image: String { get }
     var description: String { get }
     var price: Double { get }
 }

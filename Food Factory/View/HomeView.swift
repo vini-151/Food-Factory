@@ -17,7 +17,7 @@ protocol HomeViewDelegate: AnyObject {
 class HomeView: UIView {
     
     private lazy var brazilianButton = makeCardButton(
-        imageName: "Image",
+        imageName: "brazilian",
         title: "Brazilian Food",
         subtitle: "Traditional flavors full of color, rhythm, and passion — from feijoada to pão de queijo.",
         target: self,
@@ -25,7 +25,7 @@ class HomeView: UIView {
     )
     
     private lazy var italianButton = makeCardButton(
-        imageName: "Image",
+        imageName: "italian",
         title: "Italian Food",
         subtitle: "Classic recipes made with love and simplicity — pasta, pizza, and the art of eating well.",
         target: self,
@@ -33,7 +33,7 @@ class HomeView: UIView {
     )
     
     private lazy var japaneseButton = makeCardButton(
-        imageName: "Image",
+        imageName: "japanese",
         title: "Japanese Food",
         subtitle: "Delicate balance of flavor and harmony — sushi, ramen, and timeless culinary craft.",
         target: self,
