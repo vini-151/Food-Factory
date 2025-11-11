@@ -35,7 +35,7 @@ class FoodCardView: UIView {
         return view
     }()
     
-    func configure(imagee: UIImage, titlee: String, subtitlee: String) {
+    func configure(imagee: String, titlee: String, subtitlee: String) {
         title.text = titlee
         subtitle.text = subtitlee
     }

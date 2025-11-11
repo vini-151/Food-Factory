@@ -18,24 +18,24 @@ class HomeView: UIView {
     
     private lazy var brazilianButton = makeCardButton(
         imageName: "Image",
-        title: "Title1",
-        subtitle: "Descriptio1",
+        title: "Brazilian Food",
+        subtitle: "Traditional flavors full of color, rhythm, and passion — from feijoada to pão de queijo.",
         target: self,
         action: #selector(brazilianButtonTapped)
     )
     
     private lazy var italianButton = makeCardButton(
         imageName: "Image",
-        title: "Title2",
-        subtitle: "Description2",
+        title: "Italian Food",
+        subtitle: "Classic recipes made with love and simplicity — pasta, pizza, and the art of eating well.",
         target: self,
         action: #selector(italianButtonTapped)
     )
     
     private lazy var japaneseButton = makeCardButton(
         imageName: "Image",
-        title: "Title3",
-        subtitle: "Description3",
+        title: "japanese Food",
+        subtitle: "Delicate balance of flavor and harmony — sushi, ramen, and timeless culinary craft.",
         target: self,
         action: #selector(japaneseButtonTapped)
     )
@@ -77,7 +77,7 @@ class HomeView: UIView {
     }
     
     @objc func japaneseButtonTapped(){
-        print("japanese")
+        delegate?.japaneseButtonTapped()
     }
     
     private func setupConstraints() {

@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class DetailView: UIView {
     
     private lazy var appetizerView: FoodCardView = {
@@ -62,6 +64,12 @@ class DetailView: UIView {
         addSubview(stackView)
         addSubview(saveButton)
     }
+    
+    func configureView(appetizer: Appetizer, mainDish: MainDish, dessert: Dessert){
+        appetizerView.configure(imagee: appetizer.name, titlee: appetizer.name, subtitlee: appetizer.description)
+        mainDishView.configure(imagee: mainDish.name, titlee: mainDish.name, subtitlee: mainDish.description)
+        dessertView.configure(imagee: dessert.name, titlee: dessert.name, subtitlee: dessert.description)
+    }
 
     func setupConstraints(){
         
@@ -71,20 +79,14 @@ class DetailView: UIView {
         ]
         
         let appetizerConstraints: [NSLayoutConstraint] = [
-//            appetizerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            appetizerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             appetizerView.heightAnchor.constraint(equalToConstant: 200)
         ]
         
         let dessertConstraints: [NSLayoutConstraint] = [
-//            dessertView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            appetizerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             dessertView.heightAnchor.constraint(equalToConstant: 200)
         ]
         
         let mainDishConstraints: [NSLayoutConstraint] = [
-//            mainDishView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            mainDishView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             mainDishView.heightAnchor.constraint(equalToConstant: 200)
         ]
         

@@ -13,6 +13,8 @@ class CardButton: UIButton {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 3
         label.text = "Text"
         return label
     }()
@@ -88,6 +90,7 @@ class CardButton: UIButton {
             
             subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: -55),
             subtitle.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            subtitle.trailingAnchor.constraint(equalTo: trailingAnchor)
 
         ])
     }
