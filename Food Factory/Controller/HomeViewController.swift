@@ -32,39 +32,46 @@ class HomeViewController: UIViewController {
         title = "Food Factory"
         homeView.delegate = self
     }
+
+    func setFactory(factory: FoodFactory) {
+        self.factory = factory
+    }
+    
 }
 
 
 extension HomeViewController: HomeViewDelegate {
     func brazilianButtonTapped() {
-        let factory = BrazilianFactory()
-
+    
         let menu = Menu(appetizer: factory.cozinharAppetizer(),
                         mainDish: factory.cozinharMainDish(),
                         dessert: factory.cozinharDessert()
         )
         
-        navigationController?.pushViewController(DetailViewController(menu: menu), animated: true)
+        navigationController?.pushViewController(MenuViewController(menu: menu, repository: AppRepositoryImp()), animated: true)
     }
     
     func italianButtonTapped() {
-        let factory = ItalianFactory()
+        
+        setFactory(factory: ItalianFactory())
 
+        
         let menu = Menu(appetizer: factory.cozinharAppetizer(),
                         mainDish: factory.cozinharMainDish(),
                         dessert: factory.cozinharDessert()
         )
-        navigationController?.pushViewController(DetailViewController(menu: menu), animated: true)
+        navigationController?.pushViewController(MenuViewController(menu: menu, repository: AppRepositoryImp()), animated: true)
     }
     
     func japaneseButtonTapped() {
-        let factory = JapaneseFactory()
+        
+        setFactory(factory: JapaneseFactory())
 
         let menu = Menu(appetizer: factory.cozinharAppetizer(),
                         mainDish: factory.cozinharMainDish(),
                         dessert: factory.cozinharDessert()
         )
-        navigationController?.pushViewController(DetailViewController(menu: menu), animated: true)
+        navigationController?.pushViewController(MenuViewController(menu: menu, repository: AppRepositoryImp()), animated: true)
     }
 }
 

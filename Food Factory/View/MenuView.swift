@@ -8,8 +8,11 @@
 import UIKit
 
 
+protocol MenuViewDelegate: AnyObject {
+    func saveButtonTapped() async
+}
 
-class DetailView: UIView {
+class MenuView: UIView {
     
     private lazy var appetizerView: FoodCardView = {
         let view = FoodCardView()
@@ -32,6 +35,8 @@ class DetailView: UIView {
         return view
     }()
     
+    weak var delegate: MenuViewDelegate?
+    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [appetizerView, dessertView, mainDishView])
         stackView.axis = .vertical
@@ -50,6 +55,7 @@ class DetailView: UIView {
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 8.0
         button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -69,6 +75,12 @@ class DetailView: UIView {
         appetizerView.configure(imagee: appetizer.name, titlee: appetizer.name, subtitlee: appetizer.description)
         mainDishView.configure(imagee: mainDish.name, titlee: mainDish.name, subtitlee: mainDish.description)
         dessertView.configure(imagee: dessert.name, titlee: dessert.name, subtitlee: dessert.description)
+    }
+    
+    @objc func saveButtonTapped() {
+        Task{
+            await delegate?.saveButtonTapped()
+        }
     }
 
     func setupConstraints(){

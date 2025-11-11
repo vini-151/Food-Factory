@@ -34,7 +34,7 @@ class HomeView: UIView {
     
     private lazy var japaneseButton = makeCardButton(
         imageName: "Image",
-        title: "japanese Food",
+        title: "Japanese Food",
         subtitle: "Delicate balance of flavor and harmony — sushi, ramen, and timeless culinary craft.",
         target: self,
         action: #selector(japaneseButtonTapped)
