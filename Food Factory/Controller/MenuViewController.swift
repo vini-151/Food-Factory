@@ -14,6 +14,9 @@ class MenuViewController: UIViewController {
     private let repository: AppRepository
 
     
+    // teste
+    private let testeApiRepository = ApiRepositoryImpl()
+    
     init(menu: Menu, repository: AppRepository) {
         self.menu = menu
         self.repository = repository
@@ -44,6 +47,13 @@ extension MenuViewController: MenuViewDelegate{
     func saveButtonTapped() async {
         do{
             try await repository.saveFoods(appetizer: menu.appetizer, mainDish: menu.mainDish, dessert: menu.dessert)
+            
+            // teste
+            let response =  await testeApiRepository.getArticles(topic: "Foods", lang: "en", country: "us")
+            
+            for article in response.map(\.title){
+                print(article)
+            }
             
             let foods = try await repository.getFoods()
             
