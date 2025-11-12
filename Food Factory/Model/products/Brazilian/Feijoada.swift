@@ -7,6 +7,7 @@
 
 class Feijoada: MainDish {
     var name: String = "Feijoada"
+    var image: String = "feijoada"
     
     var description: String = "Guisado de feijões-pretos com vários tipos de carne de porco e de boi."
     

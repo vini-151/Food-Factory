@@ -7,7 +7,7 @@
 
 class Mochi: Dessert {
     var name: String = "Mochi"
-    
+    var image: String = "mochi"
     var description: String = "Bolinho de massa doce de arroz recheada com pasta de feijão vermelho adocicado "
  
     var price: Double = 12.90

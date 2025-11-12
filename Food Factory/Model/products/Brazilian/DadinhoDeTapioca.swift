@@ -7,6 +7,7 @@
 
 class DadinhoDeTapioca: Appetizer {
     var name: String = "Dadinho de Tapioca"
+    var image: String = "dadinho"
     
     var description: String = "Petisco em formato de cubo, feito com tapioca granulada e queijo coalho, conhecido por sua textura crocante por fora e macia por dentro."
     

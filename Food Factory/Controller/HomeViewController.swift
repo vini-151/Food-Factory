@@ -37,43 +37,32 @@ class HomeViewController: UIViewController {
         self.factory = factory
     }
     
+    private func showMenu(for factory: FoodFactory) {
+        setFactory(factory: factory)
+        
+        let menu = Menu(appetizer: factory.cozinharAppetizer(),
+                        mainDish: factory.cozinharMainDish(),
+                        dessert: factory.cozinharDessert()
+        )
+        
+        let vc = MenuViewController(menu: menu, repository: AppRepositoryImp())
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 }
 
 
 extension HomeViewController: HomeViewDelegate {
     func brazilianButtonTapped() {
-        
-        setFactory(factory: BrazilianFactory())
-    
-        let menu = Menu(appetizer: factory.cozinharAppetizer(),
-                        mainDish: factory.cozinharMainDish(),
-                        dessert: factory.cozinharDessert()
-        )
-        
-        navigationController?.pushViewController(MenuViewController(menu: menu, repository: AppRepositoryImp()), animated: true)
+        showMenu(for: BrazilianFactory())
     }
-    
     func italianButtonTapped() {
-        
-        setFactory(factory: ItalianFactory())
+        showMenu(for: ItalianFactory())
 
-        
-        let menu = Menu(appetizer: factory.cozinharAppetizer(),
-                        mainDish: factory.cozinharMainDish(),
-                        dessert: factory.cozinharDessert()
-        )
-        navigationController?.pushViewController(MenuViewController(menu: menu, repository: AppRepositoryImp()), animated: true)
     }
-    
     func japaneseButtonTapped() {
-        
-        setFactory(factory: JapaneseFactory())
-
-        let menu = Menu(appetizer: factory.cozinharAppetizer(),
-                        mainDish: factory.cozinharMainDish(),
-                        dessert: factory.cozinharDessert()
-        )
-        navigationController?.pushViewController(MenuViewController(menu: menu, repository: AppRepositoryImp()), animated: true)
+        showMenu(for: JapaneseFactory())
     }
 }
 

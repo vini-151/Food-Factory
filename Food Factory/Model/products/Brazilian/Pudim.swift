@@ -7,6 +7,7 @@
 
 class Pudim: Dessert {
     var name: String = "Pudim"
+    var image: String = "pudim"
     
     var description: String = "Sobremesa cremosa e suave, com sabor adocicado e a doçura equilibrada do leite condensado, coberta por uma calda de caramelo dourada e brilhante."
     

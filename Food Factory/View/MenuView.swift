@@ -14,6 +14,19 @@ protocol MenuViewDelegate: AnyObject {
 
 class MenuView: UIView {
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var appetizerView: FoodCardView = {
         let view = FoodCardView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -53,6 +66,8 @@ class MenuView: UIView {
         button.setTitle("Save", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemGreen
+        button.tintColor = .white
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
         button.layer.cornerRadius = 8.0
         button.isUserInteractionEnabled = true
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
@@ -67,14 +82,16 @@ class MenuView: UIView {
     }
     
     func setupViews(){
-        addSubview(stackView)
-        addSubview(saveButton)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(stackView)
+        contentView.addSubview(saveButton)
     }
     
     func configureView(appetizer: Appetizer, mainDish: MainDish, dessert: Dessert){
-        appetizerView.configure(imagee: appetizer.name, titlee: appetizer.name, subtitlee: appetizer.description)
-        mainDishView.configure(imagee: mainDish.name, titlee: mainDish.name, subtitlee: mainDish.description)
-        dessertView.configure(imagee: dessert.name, titlee: dessert.name, subtitlee: dessert.description)
+        appetizerView.configure(imagee: appetizer.image, titlee: appetizer.name, subtitlee: appetizer.description)
+        mainDishView.configure(imagee: mainDish.image, titlee: mainDish.name, subtitlee: mainDish.description)
+        dessertView.configure(imagee: dessert.image, titlee: dessert.name, subtitlee: dessert.description)
     }
     
     @objc func saveButtonTapped() {
@@ -83,38 +100,33 @@ class MenuView: UIView {
         }
     }
 
-    func setupConstraints(){
-        
-        let stackViewConstraints: [NSLayoutConstraint] = [
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 120),
-            stackView.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ]
-        
-        let appetizerConstraints: [NSLayoutConstraint] = [
-            appetizerView.heightAnchor.constraint(equalToConstant: 200)
-        ]
-        
-        let dessertConstraints: [NSLayoutConstraint] = [
-            dessertView.heightAnchor.constraint(equalToConstant: 200)
-        ]
-        
-        let mainDishConstraints: [NSLayoutConstraint] = [
-            mainDishView.heightAnchor.constraint(equalToConstant: 200)
-        ]
-        
-        let saveButtonConstraints: [NSLayoutConstraint] = [
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -25),
+            stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            appetizerView.heightAnchor.constraint(equalToConstant: 270),
+            dessertView.heightAnchor.constraint(equalToConstant: 270),
+            mainDishView.heightAnchor.constraint(equalToConstant: 270),
+
             saveButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             saveButton.widthAnchor.constraint(equalToConstant: 200),
             saveButton.heightAnchor.constraint(equalToConstant: 50),
-            saveButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(appetizerConstraints +
-                                    dessertConstraints +
-                                    mainDishConstraints +
-                                    stackViewConstraints +
-                                    saveButtonConstraints
-        )
+            saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40)
+        ])
     }
     
     required init?(coder: NSCoder) {
