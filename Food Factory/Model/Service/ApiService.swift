@@ -41,11 +41,8 @@ class ApiService {
         
         do {
             let decoder = JSONDecoder()
-            
             let articlesResponse = try decoder.decode(Articles.self, from: data)
-            
             return articlesResponse
-            
         } catch {
             throw ApiError.decodificacaoFalhou
         }
