@@ -48,12 +48,14 @@ extension MenuViewController: MenuViewDelegate{
             let foods = try await repository.getFoods()
             
             for food in foods{
-                print("============")
-                print(food.date ?? "no data")
-                print(food.appetizer ?? "no result")
-                print(food.mainDish ?? "no result")
-                print(food.dessert ?? "no result")
-                print("============")
+                print("""
+                ========= Food Saved =========
+                📅 Data: \(food.formattedDate)
+                🥗 Entrada: \(food.appetizer ?? "Sem resultado")
+                🍝 Prato Principal: \(food.mainDish ?? "Sem resultado")
+                🍰 Sobremesa: \(food.dessert ?? "Sem resultado")
+                ==============================
+                """)
 
 
             }
@@ -62,3 +64,14 @@ extension MenuViewController: MenuViewDelegate{
         }
     }
 }
+
+extension Foods {
+    var formattedDate: String {
+        guard let date = date else { return "Sem data" }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy HH:mm"
+        return formatter.string(from: date)
+    }
+}
+
+
