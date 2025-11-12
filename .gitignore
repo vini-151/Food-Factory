@@ -78,3 +78,4 @@ fastlane/test_output
 # Arquivos de dependências externas
 Carthage/Checkouts/
 
+ApiKey.swift
