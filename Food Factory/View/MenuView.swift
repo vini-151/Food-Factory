@@ -10,6 +10,7 @@ import UIKit
 
 protocol MenuViewDelegate: AnyObject {
     func saveButtonTapped() async
+    func showAlert()
 }
 
 class MenuView: UIView {
@@ -20,7 +21,7 @@ class MenuView: UIView {
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
-
+    
     private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -61,15 +62,8 @@ class MenuView: UIView {
         return stackView
     }()
     
-    private lazy var saveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Save", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemGreen
-        button.tintColor = .white
-        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.layer.cornerRadius = 8.0
-        button.isUserInteractionEnabled = true
+    private lazy var saveButton: SaveButton = {
+        let button = SaveButton()
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -98,6 +92,7 @@ class MenuView: UIView {
         Task{
             await delegate?.saveButtonTapped()
         }
+        delegate?.showAlert()
     }
 
     func setupConstraints() {

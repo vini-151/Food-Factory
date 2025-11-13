@@ -41,6 +41,12 @@ class MenuViewController: UIViewController {
 }
 
 extension MenuViewController: MenuViewDelegate{
+    func showAlert() {
+        let alert = UIAlertController(title: "Sucesso", message: "Prato salvo com sucesso!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    
     func saveButtonTapped() async {
         do{
             try await repository.saveFoods(appetizer: menu.appetizer, mainDish: menu.mainDish, dessert: menu.dessert)
